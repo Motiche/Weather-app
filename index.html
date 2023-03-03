@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+      
+    <style></style>
+  </head>
+  <body>
+    <div class="container-md centered">
+      <div class="row">
+        <div class="col-sm-2">
+          Temp in:
+          <button class="unit" id="C_button">C</button>
+          <span> | </span>
+          <button class="unit" id="F_button">F</button>
+        </div>
+        <div class="col-sm-3"></div>
+        <div class="col-sm-7">
+          <div class="input-group mb-3" id="Search-City">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter the City..."
+              aria-label="Enter the City..."
+              aria-describedby="button-addon2"
+              id="Input-city"
+            />
+            <button
+              class="btn btn-outline-dark"
+              type="button"
+              id="button-addon2"
+            >
+              Search 🔍
+            </button>
+            <button
+            class="btn btn-outline-info"
+              type="button"
+              id="My-coords"
+              >
+              My Location 📍
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Selected Weather -->
+        <div class="col-md-6 card card-body Selected">
+          <div class="row">
+            <h1 id="City">City name</h1>
+          </div>
+          <div><h2 id="selected_city">Time</h2></div>
+          <div class="emoji" id="Weather-icon">⛅</div>
+
+          <div>
+            <p>
+              <div id="Looks" style="font-weight: bold;">Clear sky</div>
+              Tempreture: <span class="Temp" id="Temp-now">?°C</span><br />
+              Todays feel: <span class="Temp"  id="feel">?°C</span><br />
+              Wind Speed: <span id="wind">?</span><br />
+              <!-- Precipitation:<span id="precip"></span><br /> -->
+              Humidity: <span id="humidity">?</span><br />
+            </p>
+          </div>
+        </div>
+        <!-- End of Selected Weather -->
+
+        <!-- Start Climate Change -->
+        <div class="col-md-6 card card-body">
+          <label for="customRange2" class="label"
+            >How is the Weather in the future? Select the year</label
+          >
+          <input
+            type="range"
+            class="range"
+            min="0"
+            step="20"
+            max="80"
+            id="customRange2"
+            oninput="this.nextElementSibling.value = this.value"
+          />
+          <output>40</output>
+        </div>
+
+        <!-- End Climate Change -->
+      </div>
+
+      <div class="row"><div class="col-md-6"></div></div>
+      <!-- Weather cards -->
+      <div class="row">
+        <div class="col-md-2 card card-body Weather-card">
+          <h2>Sat</h2>
+          <p>☁️ <span class="Temp">10°C</span></p>
+        </div>
+        <div class="col-md-2 card card-body Weather-card">
+          <h2>Sun</h2>
+          <p>❄️ <span class="Temp">7°C</span></p>
+        </div>
+        <div class="col-md-2 card card-body Weather-card">
+          <h2>Mon</h2>
+          <p>🌥️ <span class="Temp">-5°C</span></p>
+        </div>
+        <div class="col-md-2 card card-body Weather-card">
+          <h2>Tue</h2>
+          <p>🌩️ <span class="Temp">-3°C</span></p>
+        </div>
+        <div class="col-md-2 card card-body Weather-card">
+          <h2>Wed</h2>
+          <p>❄️ <span class="Temp">0°C</span></p>
+        </div>
+        <div class="col-md-2 card card-body Weather-card">
+          <h2>Thr</h2>
+          <p>🌥️ <span class="Temp">11°C</span></p>
+        </div>
+      </div>
+      <!-- End of Weather cards -->
+
+      <!-- get informed -->
+      <div class="row information">
+        Get informed about climate change!
+        <div class="col-md-12">
+          <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+              <h5 class="accordion-header" id="flush-headingOne">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseOne"
+                  aria-expanded="false"
+                  aria-controls="flush-collapseOne"
+                >
+                  What is the Climate Change?
+                </button>
+              </h5>
+              <div
+                id="flush-collapseOne"
+                class="accordion-collapse collapse"
+                aria-labelledby="flush-headingOne"
+                data-bs-parent="#accordionFlushExample"
+              >
+                <div class="accordion-body">
+                  Placeholder content for this accordion, which is intended to
+                  demonstrate the <code>.accordion-flush</code> class. This is
+                  the first item's accordion body.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h5 class="accordion-header" id="flush-headingTwo">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="flush-collapseTwo"
+                >
+                  Why the Climate is changing?
+                </button>
+              </h5>
+              <div
+                id="flush-collapseTwo"
+                class="accordion-collapse collapse"
+                aria-labelledby="flush-headingTwo"
+                data-bs-parent="#accordionFlushExample"
+              >
+                <div class="accordion-body">
+                  Placeholder content for this accordion, which is intended to
+                  demonstrate the <code>.accordion-flush</code> class. This is
+                  the second item's accordion body. Let's imagine this being
+                  filled with some actual content.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h5 class="accordion-header" id="flush-headingThree">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseThree"
+                  aria-expanded="false"
+                  aria-controls="flush-collapseThree"
+                >
+                  Is it preventable/ reversible?
+                </button>
+              </h5>
+              <div
+                id="flush-collapseThree"
+                class="accordion-collapse collapse"
+                aria-labelledby="flush-headingThree"
+                data-bs-parent="#accordionFlushExample"
+              >
+                <div class="accordion-body">
+                  Placeholder content for this accordion, which is intended to
+                  demonstrate the <code>.accordion-flush</code> class. This is
+                  the third item's accordion body. Nothing more exciting
+                  happening here in terms of content, but just filling up the
+                  space to make it look, at least at first glance, a bit more
+                  representative of how this would look in a real-world
+                  application.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of get informed -->
+    </div>
+    <footer style="font-family: monospace; text-align: center">
+      Developed by Motiche
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script src="src/index.js"></script>
+  </body>
+</html>

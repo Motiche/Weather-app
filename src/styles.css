@@ -1,0 +1,98 @@
+body {
+  background-image: url("images/bg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.centered {
+  display: block;
+  border-radius: 25px;
+  border: 1px solid rgba(200, 200, 200, 0.5);
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  padding: 1.5%;
+  background-color: rgba(200, 200, 200, 0.5);
+}
+
+.Selected {
+  display: grid;
+  align-items: center;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 5px;
+  height: fit-content;
+  width: fit-content;
+  padding-bottom: 1px;
+  padding-top: 5px;
+}
+.unit {
+  width: 30px;
+  height: 30px;
+  padding: 0px;
+  border: rgba(333, 333, 333, 0.9);
+  border-radius: 20%;
+}
+.unit:hover {
+  background-color: rgba(333, 333, 333, 0.3);
+  border: rgba(333, 333, 333, 0);
+}
+
+.CC {
+  height: fit-content;
+  width: fit-content;
+}
+.Selected .row > h1 {
+  text-align: center;
+  justify-content: center;
+  display: block;
+}
+.btn {
+  background-color: whitesmoke;
+}
+.Selected .emoji {
+  font-size: 120px;
+  text-align: center;
+  padding: 0px;
+}
+.row {
+  padding: 5px;
+  justify-content: center;
+}
+.card {
+  background-color: rgba(333, 333, 333, 0.6);
+  height: fit-content;
+  width: 15%;
+}
+.Weather-card > h2 {
+  font-size: 25px;
+  text-align: center;
+}
+.Weather-card > p {
+  font-size: 20px;
+  text-align: center;
+}
+.accordion {
+  border-radius: 25px;
+}
+.accordion-button {
+  background-color: rgba(333, 333, 333, 0);
+  border: none;
+  padding: 0px;
+}
+
+.accordion-flush {
+  border: none;
+}
+.accordion-item {
+  background-color: rgba(333, 333, 333, 0.4);
+  border: none;
+  border-radius: 2px;
+}
+.information {
+  margin-top: 10px;
+  background-color: rgba(333, 333, 333, 0.4);
+  height: fit-content;
+  border-radius: 25px;
+}
