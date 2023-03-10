@@ -10,6 +10,24 @@ let Week = [
   "Friday",
   "Saturday",
 ];
+var Icon_dict = {
+  Clear: "☀️",
+  Clouds: "⛅",
+  Drizzle: "🌧️",
+  Rain: "🌦️",
+  Thunderstorm: "⛈️",
+  Snow: "❄️",
+  Mist: "🌫️",
+  Smoke: "🌫️",
+  Haze: "🌫️",
+  Dust: "🌫️",
+  Fog: "🌁",
+  Sand: "⏳",
+  Ash: "🌫️",
+  Squall: "💨",
+  Tornado: "🌪️",
+};
+
 let now = new Date();
 let day = now.getDay();
 day = Week[day];
@@ -137,21 +155,3 @@ document.querySelector("#My-coords").addEventListener("click", Coord_Temp);
 // for tamplate
 let Weather_City_URL = `https://api.openweathermap.org/data/2.5/weather?q=Tehran&appid=${API_key}&units=metric`;
 axios.get(Weather_City_URL).then(ShowTemp);
-
-var Icon_dict = {
-  Clear: "☀️",
-  Clouds: "⛅",
-  Drizzle: "🌧️",
-  Rain: "🌦️",
-  Thunderstorm: "⛈️",
-  Snow: "❄️",
-  Mist: "🌫️",
-  Smoke: "🌫️",
-  Haze: "🌫️",
-  Dust: "🌫️",
-  Fog: "🌁",
-  Sand: "⏳",
-  Ash: "🌫️",
-  Squall: "💨",
-  Tornado: "🌪️",
-};
