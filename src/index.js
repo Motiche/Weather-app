@@ -74,20 +74,13 @@ document.getElementById("C_button").onclick = function () {
 let API_key = "b1c040ca4f95f4c9b373d01b21c7e668";
 
 //
-function fixTime(response) {
-  console.log(response);
-  // let now = response.data.dt;
-  // now = new Date(now * 1000);
-  // let time = "";
-  // if (now.getMinutes() < 10) {
-  //   time = `${now.getHours()}:0${now.getMinutes()}`;
-  // } else {
-  //   time = `${now.getHours()}:${now.getMinutes()}`;
-  // }
-  // console.log(now);
+async function fixTime(time_url) {
+  const response = await fetch(time_url);
+  var data = await response.json();
+  // console.log(data);
+  let now = new Date(data.date_time_txt);
   let day = Week[now.getDay()];
-  let Time_text = `${response.hour} ${response.minute}`;
-
+  let Time_text = `${day}, ${now.getHours()}:${now.getMinutes()}`;
   let Time = document.getElementById("selected_city");
   Time.innerHTML = Time_text;
 }
@@ -101,7 +94,7 @@ String.prototype.toProperCase = function () {
 
 function ShowTemp(response) {
   let Temp = response.data.main;
-  console.log(response);
+  // console.log(response);
   document.getElementById("Temp-now").innerHTML = `${Math.round(Temp.temp)}°C`;
   document.getElementById("feel").innerHTML = `${Math.round(
     Temp.feels_like
@@ -115,12 +108,11 @@ function ShowTemp(response) {
   document.querySelector("#City").innerHTML = response.data.name;
   let Icon = response.data.weather[0].main;
   document.getElementById("Weather-icon").innerHTML = Icon_dict[Icon];
-
-  let time_API = `https://www.timeapi.io/api/Time/current/coordinate?latitude=${response.data.coord.lon}&longitude=${response.data.coord.lat}`;
-  axios.get(time_API).then(fixTime);
+  let time_API_Key = "b0e84ce4817c454fa7ef006f3a33df4f";
+  let time_API = `https://api.ipgeolocation.io/timezone?apiKey=${time_API_Key}&lat=${response.data.coord.lat}&long=${response.data.coord.lon}`;
+  fixTime(time_API);
 }
-function Show_city(event) {
-  event.preventDefault();
+function Show_city() {
   let input = document.querySelector("#Input-city");
   let new_city = input.value.toProperCase();
   let Weather_City_URL = `https://api.openweathermap.org/data/2.5/weather?q=${new_city}&appid=${API_key}&units=metric`;
@@ -130,12 +122,20 @@ function Show_city(event) {
     alert(`City not found.`);
   }
 }
-
-let form = document.querySelector("#button-addon2");
-form.addEventListener("click", Show_city);
+// Search city button
+// Execute a function when the user presses a key on the keyboard
+let input = document.querySelector("#Input-city");
+input.addEventListener("keypress", function (event) {
+  // If the user presses the "Enter" key on the keyboard
+  if (event.key === "Enter") {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    document.getElementById("button-addon2").click();
+  }
+});
 
 // Geo Location
-
 // this get coord of the user
 var Coords = {};
 function handlePosition(position) {
