@@ -1,6 +1,3 @@
-// ⏰Feature #1
-// In your project, display the current date and time using JavaScript: Tuesday 16:00
-
 let Week = [
   "Sunday",
   "Monday",
@@ -28,23 +25,7 @@ var Icon_dict = {
   Tornado: "🌪️",
 };
 
-let now = new Date();
-let day = now.getDay();
-day = Week[day];
-let time = "";
-if (now.getMinutes() < 10) {
-  time = `${now.getHours()}:0${now.getMinutes()}`;
-} else {
-  time = `${now.getHours()}:${now.getMinutes()}`;
-}
-
-let Time_text = `${day}, ${time}`;
-let Time = document.getElementById("selected_city");
-Time.innerHTML = Time_text;
-
-// 🙀Bonus Feature
-// Display a fake temperature (i.e 17) in Celsius and add a link to convert it to Fahrenheit. When clicking on it, it should convert the temperature to Fahrenheit. When clicking on Celsius, it should convert it back to Celsius.
-
+/// Celcius to Farenheit
 function C_to_F(temp) {
   let F = temp * 1.8 + 32;
   return Math.round(F);
@@ -92,6 +73,24 @@ document.getElementById("C_button").onclick = function () {
 // API key
 let API_key = "b1c040ca4f95f4c9b373d01b21c7e668";
 
+//
+function fixTime(response) {
+  console.log(response);
+  // let now = response.data.dt;
+  // now = new Date(now * 1000);
+  // let time = "";
+  // if (now.getMinutes() < 10) {
+  //   time = `${now.getHours()}:0${now.getMinutes()}`;
+  // } else {
+  //   time = `${now.getHours()}:${now.getMinutes()}`;
+  // }
+  // console.log(now);
+  let day = Week[now.getDay()];
+  let Time_text = `${response.hour} ${response.minute}`;
+
+  let Time = document.getElementById("selected_city");
+  Time.innerHTML = Time_text;
+}
 // 🕵️‍♀️Feature #2
 // Add a search engine, when searching for a city (i.e. Paris), display the city name on the page after the user submits the form.
 String.prototype.toProperCase = function () {
@@ -116,6 +115,9 @@ function ShowTemp(response) {
   document.querySelector("#City").innerHTML = response.data.name;
   let Icon = response.data.weather[0].main;
   document.getElementById("Weather-icon").innerHTML = Icon_dict[Icon];
+
+  let time_API = `https://www.timeapi.io/api/Time/current/coordinate?latitude=${response.data.coord.lon}&longitude=${response.data.coord.lat}`;
+  axios.get(time_API).then(fixTime);
 }
 function Show_city(event) {
   event.preventDefault();
@@ -135,17 +137,17 @@ form.addEventListener("click", Show_city);
 // Geo Location
 
 // this get coord of the user
-var coords = {};
+var Coords = {};
 function handlePosition(position) {
-  coords.lat = position.coords.latitude;
-  coords.lon = position.coords.longitude;
+  Coords.lat = position.coords.latitude;
+  Coords.lon = position.coords.longitude;
 }
 navigator.geolocation.getCurrentPosition(handlePosition);
 //
 // change temp according to coord
 function Coord_Temp(event) {
   event.preventDefault();
-  let Weather_City_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&appid=${API_key}&units=metric`;
+  let Weather_City_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${Coords.lat}&lon=${Coords.lon}&appid=${API_key}&units=metric`;
   console.log(Weather_City_URL);
   axios.get(Weather_City_URL).then(ShowTemp);
 }
