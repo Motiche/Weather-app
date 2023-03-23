@@ -13,6 +13,8 @@
     />
     <link rel="stylesheet" href="src/styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
   </head>
   <body>
     <div class="container-md centered">
@@ -90,7 +92,10 @@
             oninput="this.nextElementSibling.value = this.value"
           />
           <output>40</output>
+          <canvas id="myChart" style = 'max-width:400px; max-height:200px; padding: 0px;'><!-- Plotly chart will be drawn inside this DIV --></canvas>
         </div>
+
+  
 
         <!-- End Climate Change -->
       </div>
