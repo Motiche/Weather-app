@@ -19,13 +19,23 @@ body {
 .Selected {
   display: grid;
   align-items: center;
-  grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr;
   column-gap: 5px;
   height: fit-content;
   width: fit-content;
   padding-bottom: 1px;
-  padding-top: 5px;
+  padding-top: 1px;
+  padding: 20px;
+  margin: 0px;
+}
+
+.myChart {
+  height: 100px;
+  width: fit-content;
+  padding-bottom: 3px;
+  padding-top: 3px;
+  padding: 33px;
+  margin: 0px;
 }
 .unit {
   width: 30px;

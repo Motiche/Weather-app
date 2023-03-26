@@ -55,15 +55,12 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row main ">
         <!-- Selected Weather -->
-        <div class="col-md-6 card card-body Selected">
-          <div class="row">
-            <h1 id="City">City name</h1>
-          </div>
+        <div class="col-md-6 card card-body Selected align-items-stretch">
+            <h1 id="City" style="text-align: center;">City name</h1>
           <div><h2 id="selected_city">Time</h2></div>
           <div class="emoji" id="Weather-icon">⛅</div>
-
           <div>
             <p>
               <div id="Looks" style="font-weight: bold;">Clear sky</div>
@@ -77,27 +74,14 @@
         </div>
         <!-- End of Selected Weather -->
 
-        <!-- Start Climate Change -->
-        <div class="col-md-6 card card-body">
-          <label for="customRange2" class="label"
-            >How is the Weather in the future? Select the year</label
-          >
-          <input
-            type="range"
-            class="range"
-            min="0"
-            step="20"
-            max="80"
-            id="customRange2"
-            oninput="this.nextElementSibling.value = this.value"
-          />
-          <output>40</output>
-          <canvas id="myChart" style = 'max-width:400px; max-height:200px; padding: 0px;'><!-- Plotly chart will be drawn inside this DIV --></canvas>
+        <!-- Start Plot -->
+        <div class="col-md-6 card card-body align-items-stretch myChart">
+          <canvas id="myChart"><!-- Plotly chart will be drawn inside this DIV --></canvas>
         </div>
 
   
 
-        <!-- End Climate Change -->
+        <!-- End Plot -->
       </div>
 
       <div class="row"><div class="col-md-6"></div></div>
@@ -155,9 +139,9 @@
                 data-bs-parent="#accordionFlushExample"
               >
                 <div class="accordion-body">
-                  Placeholder content for this accordion, which is intended to
-                  demonstrate the <code>.accordion-flush</code> class. This is
-                  the first item's accordion body.
+                  Climate change refers to long-term shifts in temperatures and weather patterns. These shifts may be natural, but since the 1800s, human activities have been the main driver of climate change, primarily due to the burning of fossil fuels (like coal, oil and gas), which produces heat-trapping gases.
+                  <br/>From <a href="https://www.un.org/en/climatechange/what-is-climate-change">the United Nations</a>
+                  <br/>
                 </div>
               </div>
             </div>
@@ -181,10 +165,10 @@
                 data-bs-parent="#accordionFlushExample"
               >
                 <div class="accordion-body">
-                  Placeholder content for this accordion, which is intended to
-                  demonstrate the <code>.accordion-flush</code> class. This is
-                  the second item's accordion body. Let's imagine this being
-                  filled with some actual content.
+                  Burning fossil fuels generates greenhouse gas emissions that act like a blanket wrapped around the Earth, trapping the sun’s heat and raising temperatures.
+
+Examples of greenhouse gas emissions that are causing climate change include carbon dioxide and methane. These come from using gasoline for driving a car or coal for heating a building, for example. Clearing land and forests can also release carbon dioxide. Landfills for garbage are a major source of methane emissions. Energy, industry, transport, buildings, agriculture and land use are among the main emitters.
+                  <br/>
                 </div>
               </div>
             </div>
@@ -208,13 +192,17 @@
                 data-bs-parent="#accordionFlushExample"
               >
                 <div class="accordion-body">
-                  Placeholder content for this accordion, which is intended to
-                  demonstrate the <code>.accordion-flush</code> class. This is
-                  the third item's accordion body. Nothing more exciting
-                  happening here in terms of content, but just filling up the
-                  space to make it look, at least at first glance, a bit more
-                  representative of how this would look in a real-world
-                  application.
+                  1.Save energy at home
+                  2.Walk, bike, or take public transport
+                  3.Eat more vegetables
+                  4.Consider your travel
+                  5.Throw away less food
+                  6.Reduce, reuse, repair, recycle
+                  7.Change your home's source of energy
+                  8.Switch to an electric vehicle
+                  9.Make your money count
+                  10.Speak up
+                  <br/>Read more about it <a href="https://www.un.org/en/actnow/ten-actions">here.</a>
                 </div>
               </div>
             </div>

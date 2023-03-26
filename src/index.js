@@ -82,14 +82,14 @@ async function fixTime(time_url) {
   let now = new Date(data.date_time_txt);
   day = Week[now.getDay()];
   let Hour = now.getHours();
-  if (Hour < 10){
+  if (Hour < 10) {
     Hour = `0${Hour}`;
   }
   let Minutes = now.getMinutes();
-  if (Minutes < 10){
+  if (Minutes < 10) {
     Minutes = `0${Minutes}`;
   }
-  
+
   let Time_text = `${day}, ${Hour}:${Minutes}`;
   let Time = document.getElementById("selected_city");
   Time.innerHTML = Time_text;
@@ -164,35 +164,37 @@ document.querySelector("#My-coords").addEventListener("click", Coord_Temp);
 let Weather_City_URL = `https://api.openweathermap.org/data/2.5/weather?q=Tehran&appid=${API_key}&units=metric`;
 axios.get(Weather_City_URL).then(ShowTemp);
 
-
-let day_index = Week.find(element => element === day);
+let day_index = Week.find((element) => element === day);
 console.log(day_index);
 
-/// Future Plot
-xValues = [100,200,300,400,500,600,700,800,900,1000];
+/// Week Plot
 
 new Chart("myChart", {
   type: "line",
   data: {
-    labels: xValues,
-    datasets: [{ 
-      label: "Tempreture",
-      data: [860,1140,1060,1060,1070,1110,1330,2210,7830,2478],
-      borderColor: "red",
-      fill: false
-    }, { 
-      label: "Wind Speed",
-      data: [1600,1700,1700,1900,2000,2700,4000,5000,6000,7000],
-      borderColor: "green",
-      fill: false
-    }, { 
-      label: "Tempreture",
-      data: [300,700,2000,5000,6000,4000,2000,1000,200,100],
-      borderColor: "blue",
-      fill: false
-    }]
+    labels: Week,
+    datasets: [
+      {
+        label: "Tempreture (°C)",
+        data: [23, 21, 24, 25, 27, 23, 21],
+        borderColor: "rgb(255, 111, 111)",
+        fill: false,
+      },
+      {
+        label: "Wind Speed (km/h)",
+        data: [5, 4, 6, 5.5, 3, 2, 4],
+        borderColor: "rgb(83, 198, 114)",
+        fill: false,
+      },
+      {
+        label: "Humidity (%)",
+        data: [31, 34, 25, 41, 38, 24, 27],
+        borderColor: "rgb(54, 162, 200)",
+        fill: false,
+      },
+    ],
   },
   options: {
-    legend: {display: true}
-  }
+    legend: { display: true },
+  },
 });
