@@ -1,3 +1,3 @@
 # Weather-app
-[Google]: http://google.com/
-This is [an example](http://example.com/ "Title") inline link.
+This is a Weather App webpage designed as a "SheCodes Plus" course project.
+You can see the webpage [here](https://zingy-unicorn-638ef8.netlify.app/ "Weather App").
