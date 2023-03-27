@@ -23,18 +23,15 @@ body {
   column-gap: 5px;
   height: fit-content;
   width: fit-content;
-  padding-bottom: 1px;
-  padding-top: 1px;
-  padding: 20px;
   margin: 0px;
+  padding: 26px;
 }
 
 .myChart {
-  height: 100px;
-  width: fit-content;
-  padding-bottom: 1px;
-  padding-top: 1px;
-  padding: 20px;
+  padding: 0px;
+  margin: 0px;
+}
+.CHART {
   margin: 0px;
 }
 
@@ -44,6 +41,7 @@ body {
   padding: 0px;
   border: rgba(333, 333, 333, 0.9);
   border-radius: 20%;
+  color: black;
 }
 .unit:hover {
   background-color: rgba(333, 333, 333, 0.3);
@@ -63,9 +61,7 @@ body {
   background-color: whitesmoke;
 }
 .Selected .emoji {
-  font-size: 120px;
   text-align: center;
-  padding: 0px;
 }
 .row {
   padding: 5px;
@@ -73,8 +69,12 @@ body {
 }
 .card {
   background-color: rgba(333, 333, 333, 0.6);
-  height: fit-content;
-  width: 15%;
+
+  transition: ease-in-out 0.3s;
+}
+
+.card:hover {
+  background-color: rgba(333, 333, 333, 0.9);
 }
 
 .Weather-card {
@@ -90,6 +90,10 @@ body {
 }
 .Weather-card:hover {
   background-color: rgba(355, 355, 355, 0.9);
+}
+
+.Prediction {
+  font-size: 18px;
 }
 .accordion {
   border-radius: 25px;
