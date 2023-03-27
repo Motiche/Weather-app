@@ -62,7 +62,7 @@ function F_to_C_convert() {
     tem = tem.substring(0, tem.length - 2);
     tem = Number(tem);
     tem = F_to_C(tem);
-    T.innerHTML = `${tem}°F`;
+    T.innerHTML = `${tem}°C`;
   }
 }
 document.getElementById("C_button").disabled = true;
@@ -167,28 +167,33 @@ axios.get(Weather_City_URL).then(ShowTemp);
 let day_index = Week.find((element) => element === day);
 console.log(day_index);
 
+let Weekdays = ["Sun", "Mon", "Tue", "Wed", "Thr", "Fri", "Sat"];
+let Temp_forcast = [23, 21, 24, 25, 27, 23, 21];
+let Wind_forcast = [5, 4, 6, 5.5, 3, 2, 4];
+let Humidity_forcast = [31, 34, 25, 41, 38, 24, 27];
+
 /// Week Plot
 
 new Chart("myChart", {
   type: "line",
   data: {
-    labels: Week,
+    labels: Weekdays,
     datasets: [
       {
         label: "Tempreture (°C)",
-        data: [23, 21, 24, 25, 27, 23, 21],
+        data: Temp_forcast,
         borderColor: "rgb(255, 111, 111)",
         fill: false,
       },
       {
         label: "Wind Speed (km/h)",
-        data: [5, 4, 6, 5.5, 3, 2, 4],
+        data: Wind_forcast,
         borderColor: "rgb(83, 198, 114)",
         fill: false,
       },
       {
         label: "Humidity (%)",
-        data: [31, 34, 25, 41, 38, 24, 27],
+        data: Humidity_forcast,
         borderColor: "rgb(54, 162, 200)",
         fill: false,
       },
@@ -198,3 +203,16 @@ new Chart("myChart", {
     legend: { display: true },
   },
 });
+
+function Show_forcast() {
+  let Forcast_html = ``;
+  for (let i = 1; i < 7; i++) {
+    Forcast_html += `<div class="col-md-2 card card-body Weather-card">
+          <h2>${Weekdays[i]}</h2>
+          <p>☁️ <span class="Temp">${Temp_forcast[i]}°C</span></p>
+        </div>`;
+  }
+  document.getElementById("forcast-cards").innerHTML = Forcast_html;
+}
+
+Show_forcast();

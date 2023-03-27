@@ -32,11 +32,12 @@ body {
 .myChart {
   height: 100px;
   width: fit-content;
-  padding-bottom: 3px;
-  padding-top: 3px;
-  padding: 33px;
+  padding-bottom: 1px;
+  padding-top: 1px;
+  padding: 20px;
   margin: 0px;
 }
+
 .unit {
   width: 30px;
   height: 30px;
@@ -75,6 +76,10 @@ body {
   height: fit-content;
   width: 15%;
 }
+
+.Weather-card {
+  transition: ease-in-out 0.3s;
+}
 .Weather-card > h2 {
   font-size: 25px;
   text-align: center;
@@ -83,6 +88,9 @@ body {
   font-size: 20px;
   text-align: center;
 }
+.Weather-card:hover {
+  background-color: rgba(355, 355, 355, 0.9);
+}
 .accordion {
   border-radius: 25px;
 }
@@ -90,6 +98,7 @@ body {
   background-color: rgba(333, 333, 333, 0);
   border: none;
   padding: 0px;
+  transition: ease-in-out 0.3s;
 }
 
 .accordion-flush {
