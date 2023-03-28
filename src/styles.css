@@ -93,6 +93,11 @@ body {
 }
 
 .Prediction {
+  font-size: 15px;
+}
+.Forcast-desc {
+  text-transform: capitalize;
+  text-align: center;
   font-size: 18px;
 }
 .accordion {

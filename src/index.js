@@ -88,9 +88,6 @@ async function fixTime(time_url) {
   let Time_text = `${day_now}, ${Hour}:${Minutes}`;
   let Time = document.getElementById("selected_city");
   Time.innerHTML = Time_text;
-  V1 = this.Weekdays.slice(day, 7);
-  V2 = this.Weekdays.slice(0, day);
-  Weekdays_reorder = V1.concat(V2);
 }
 // 🕵️‍♀️Feature #2
 // Add a search engine, when searching for a city (i.e. Paris), display the city name on the page after the user submits the form.
@@ -173,6 +170,7 @@ function Forcast_Weather_data(response) {
     Humidity_forcast[i] = Temp.humidity;
     Wind_forcast[i] = TEMP[i].wind.speed;
     Icons[i] = TEMP[i].condition.icon_url;
+    Description[i] = TEMP[i].condition.description;
   }
   Show_forcast();
 }
@@ -185,7 +183,7 @@ function Forcast_Weather() {
 }
 
 /// Week Plot
-function plot() {
+function plot(Weekdays_reorder) {
   new Chart("myChart", {
     type: "line",
     data: {
@@ -219,18 +217,24 @@ function plot() {
 
 function Show_forcast() {
   let Forcast_html = ``;
+  V1 = this.Weekdays.slice(day, 7);
+  V2 = this.Weekdays.slice(0, day);
+  Weekdays_reorder = V1.concat(V2);
   for (let i = 1; i < 7; i++) {
     Forcast_html += `<div class="col-md-2 card card-body Weather-card">
-          <p> <b>${Weekdays_reorder[i]} </b><span class="Temp Prediction">${Temp_min[i]}</span> - 
-          <span class="Temp Prediction">${Temp_max[i]}°C</span>
-          <img src=${Icons[i]}></p>
+          <b style="text-align:center; font-size:20px;">${Weekdays_reorder[i]} </b>
+          <img src=${Icons[i]}>
+          <p>
+          <span class="Forcast-desc">${Description[i]}</span><br/>
+          <span class="Temp Prediction">${Temp_min[i]} - ${Temp_max[i]}°C</span>
+          </p>
           
         </div>`;
   }
   document.getElementById("Weather-icon").innerHTML = `<img src = ${Icons[0]} 
   width="150" height="150">`;
   document.getElementById("forcast-cards").innerHTML = Forcast_html;
-  plot();
+  plot(Weekdays_reorder);
 }
 
 // for tamplate
@@ -238,13 +242,10 @@ let Weather_City_URL = `https://api.shecodes.io/weather/v1/current?query=Tehran&
 axios.get(Weather_City_URL).then(ShowTemp);
 
 var Weekdays = ["Sun", "Mon", "Tue", "Wed", "Thr", "Fri", "Sat"];
-console.log(day);
-var V1 = this.Weekdays.slice(day, 7);
-var V2 = this.Weekdays.slice(0, day);
-var Weekdays_reorder = V1.concat(V2);
 var Temp_forcast = [23, 24, 22, 21, 23, 24, 25];
 var Temp_min = [21, 21, 20, 19, 22, 23, 24];
 var Temp_max = [23, 24, 22, 21, 23, 24, 25];
 var Wind_forcast = [3, 2, 4, 5, 6, 2, 3];
 var Humidity_forcast = [22, 30, 25, 45, 50, 51, 40];
 var Icons = [];
+var Description = [];
