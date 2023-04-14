@@ -68,8 +68,7 @@ body {
   justify-content: center;
 }
 .card {
-  background-color: rgba(333, 333, 333, 0.6);
-
+  background-color: rgba(300, 300, 300, 0.6);
   transition: ease-in-out 0.3s;
 }
 
